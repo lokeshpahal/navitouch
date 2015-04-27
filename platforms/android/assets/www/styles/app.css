@@ -1,4 +1,5 @@
 .login-page .page__background{background-color:#1865a9}
+.login-page .ons-tab-bar__footer{display:none;}
 .left {
 	text-align: left;
 }
@@ -47,7 +48,7 @@ input[type=email], input[type=password] {
 }
 
 .login-button,.login-button-OTP {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
 }
 
