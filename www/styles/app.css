@@ -1,5 +1,7 @@
 .login-page .page__background{background-color:#1865a9}
 .login-page .ons-tab-bar__footer{display:none;}
+.login-page .c-code{width:15%;padding:0;text-align:center;}
+.login-page .c-number{width:80%;padding:0;}
 .left {
 	text-align: left;
 }

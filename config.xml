@@ -8,5 +8,9 @@
         Apache Cordova Team
     </author>
     <content src="index.html" />
-    <access origin="*" />
+	<preference name="splashscreen" value="splash" /> 
+	<preference name="SplashScreenDelay" value="20000" />
+	<feature name="SplashScreen">
+		<param name="android-package" value="org.apache.cordova.SplashScreen" />
+	</feature>
 </widget>

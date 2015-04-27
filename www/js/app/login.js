@@ -3,9 +3,9 @@ var login = {
 	WH: $(window).innerHeight(),
 	
 	sendOTP: function(){
-		var mobNumber = $.trim($('.login-form input[type="number"]').val());
-		if(mobNumber!=''){
-			navi.pushPage('page1.html',{ animation : 'slide' })
+		var mobNumber = $.trim($('.login-form .c-number').val());
+		if (/^\d{10}$/.test(mobNumber)) {
+			navi.pushPage('page1.html',{ animation : 'lift' })
 		}
 	},
 	back: function(){
@@ -13,6 +13,12 @@ var login = {
 		return false
 	}
 }
+
+ons.ready(function() {
+  // Hide Cordova splash screen when Onsen UI is loaded completely
+  // API reference: https://github.com/apache/cordova-plugin-splashscreen/blob/master/doc/index.md
+  navigator.splashscreen.hide();
+});
 
 $(document).on('pageinit', '#first-page', function() {
 	page.setDeviceBackButtonHandler(function() {
@@ -37,7 +43,8 @@ $(document).ready(function(){
 		login.sendOTP();
 	});
 	$(document).on(appMain.event(),'.login-button-OTP',function(){
-		
+		//navi.pushPage('app.html')
+		window.location.href = 'app.html';
 	});
 });
 $(window).resize(function(){
