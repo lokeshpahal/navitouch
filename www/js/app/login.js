@@ -47,14 +47,17 @@ $(document).ready(function(){
 	$(document).on(appMain.event(),'.login-button-OTP',function(){
 		//navi.pushPage('app.html')
 		var userOtp = $.trim($('.mobile-number').val());
-		if(userOtp!=='' && (/^\d{5}$/.test(userOtp))){
-			if(userOtp===login.otp){
-				window.location.href = 'app.html';
-			}else{
-				$('.mobile-number').val('');
-				ons.notification.alert({message: 'Click button to send Again.',title: 'Invalid OTP',});
+		$('.mobile-number').blur();
+		setTimeout(function(){
+			if(userOtp!=='' && (/^\d{5}$/.test(userOtp))){
+				if(userOtp===login.otp){
+					window.location.href = 'app.html';
+				}else{
+					$('.mobile-number').val('');
+					ons.notification.alert({message: 'Click button to send Again.',title: 'Invalid OTP',});
+				}
 			}
-		}
+		},1000);
 	});
 });
 $(window).resize(function(){

@@ -39,6 +39,9 @@
   width: 80%;
   margin: 60px auto 0;
 }
+.mobile-number{  width: 25%;
+  padding: 0px;
+  text-align: center;}
 
 input[type=email], input[type=password] {
   display: block;
