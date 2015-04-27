@@ -1,10 +1,11 @@
 var login = {
 	WW: $(window).innerWidth(),
 	WH: $(window).innerHeight(),
-	
+	otp: null,
 	sendOTP: function(){
 		var mobNumber = $.trim($('.login-form .c-number').val());
 		if (/^\d{10}$/.test(mobNumber)) {
+			login.otp=appMain.getOTP();
 			navi.pushPage('page1.html',{ animation : 'lift' })
 		}
 	},
@@ -15,12 +16,13 @@ var login = {
 }
 
 ons.ready(function() {
-  // Hide Cordova splash screen when Onsen UI is loaded completely
-  // API reference: https://github.com/apache/cordova-plugin-splashscreen/blob/master/doc/index.md
-  navigator.splashscreen.hide();
+	// Hide Cordova splash screen when Onsen UI is loaded completely
+	// API reference: https://github.com/apache/cordova-plugin-splashscreen/blob/master/doc/index.md
+	navigator.splashscreen.hide();
 });
 
 $(document).on('pageinit', '#first-page', function() {
+	$('#otp-info').html(login.otp);
 	page.setDeviceBackButtonHandler(function() {
 		//alert("OK: setDeviceBackButtonHandler");
 	});
@@ -44,7 +46,15 @@ $(document).ready(function(){
 	});
 	$(document).on(appMain.event(),'.login-button-OTP',function(){
 		//navi.pushPage('app.html')
-		window.location.href = 'app.html';
+		var userOtp = $.trim($('.mobile-number').val());
+		if(userOtp!=='' && (/^\d{5}$/.test(userOtp))){
+			if(userOtp===login.otp){
+				window.location.href = 'app.html';
+			}else{
+				$('.mobile-number').val('');
+				ons.notification.alert({message: 'Click button to send Again.',title: 'Invalid OTP',});
+			}
+		}
 	});
 });
 $(window).resize(function(){
