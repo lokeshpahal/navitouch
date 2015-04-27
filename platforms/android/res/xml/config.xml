@@ -5,6 +5,9 @@
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="SQLitePlugin">
+        <param name="android-package" value="io.liteglue.SQLitePlugin" />
+    </feature>
     <name>NaviTouch</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -14,7 +17,4 @@
     </author>
     <content src="app.html" />
     <preference name="splashscreen" value="splash" />
-    <feature name="SQLitePlugin">
-        <param name="android-package" value="io.liteglue.SQLitePlugin" />
-    </feature>
 </widget>
