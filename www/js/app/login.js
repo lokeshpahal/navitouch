@@ -27,17 +27,10 @@ app.controller('AppController', function($scope, DeviceBackButtonHandler) {
 		if ($event.callParentHandler) {
 			navi.popPage('page.html')
 		} else {
-			alert('NG: ng-device-backbutton')
+			navi.popPage('page.html')
 		}
 	}
 });
-function onDeviceBackButton(event) {
-	if (event.callParentHandler) {
-		//alert('OK: on-device-backbutton');
-	} else {
-		alert('NG: on-device-backbutton');
-	}
-}
 
 $(document).ready(function(){
 	$(document).on(appMain.event(),'.login-button',function(){
