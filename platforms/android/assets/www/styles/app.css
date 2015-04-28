@@ -34,6 +34,39 @@
   color: #999;
   float: right;
 }
+
+
+#aroundme-page .list-item-container {
+  line-height: 1;
+  padding: 5px 0px 5px 5px;
+}
+
+#aroundme-page .thumbnail {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+#aroundme-page .name {
+  font-weight: 500;
+  line-height: 16px;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+#aroundme-page .location {
+  font-size: 14px;
+  opacity: 0.4;
+  margin-bottom: 6px;
+}
+
+#aroundme-page .desc {
+  line-height: 1.2;
+  font-size: 13px;
+}
+
+
 .login-form,.login-form-otp {
   text-align: center;
   width: 80%;

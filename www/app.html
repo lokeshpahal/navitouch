@@ -26,38 +26,82 @@
         <title>Hello World</title>
     </head>
     <body>
-		<ons-template id="page1.html">
-		<ons-page id="app-page">
-		  <ons-toolbar>
-			<div class="center">Log In</div>
-		  </ons-toolbar>
+		<ons-navigator animation="slide" var="appNavigator">
+			<ons-gesture-detector>
+			<ons-page id="aroundme-page">
+				<ons-toolbar>
+					<div class="left navigation-bar__title app-name">NaviTouch</div>
+					<div class="right">
+					  <span class="toolbar-button--quiet navigation-bar__line-height">
+						  <i class="ion-android-more-vertical" style="font-size: 26px;"></i>
+						</span>
+					</div>
+				</ons-toolbar>
+				<div class="tab-bar tab-bar--top tab-bar--top-border">
+				  <label class="tab-bar__item tab-bar--top-border__item">
+					<input type="radio" name="top-tab-bar-b" checked="checked">
+					<button class="tab-bar__button tab-bar--top-border__button">
+					  Around Me
+					</button>
+				  </label>
 
-		  <div class="login-form">
-			<br><br>
-			<input type="number" class="text-input--underbar" placeholder="Mobile Number" value="">
-			<br><br><br>
-			<ons-button modifier="" class="login-button">Ok</ons-button>
-		  </div>
-
-		</ons-page>
-		</ons-template>
-
+				  <label onclick="appNavigator.pushPage('page2.html');" class="tab-bar__item tab-bar--top-border__item">
+					<input type="radio" name="top-tab-bar-b">
+					<button class="tab-bar__button tab-bar--top-border__button">
+					  Contacts
+					</button>
+				  </label>
+				</div>
+					<ons-list>
+						<ons-list-item modifier="chevron" class="list-item-container">
+							<ons-row>
+								<ons-col width="75px">
+								  <img src="http://onsen.io/patterns/images/location1.png" class="thumbnail">
+								</ons-col>
+								<ons-col>
+								  <div class="name">Eiffel Tower</div>
+								  <div class="location">
+									<i class="fa fa-map-marker"></i> Paris, France
+								  </div>
+								  <div class="desc">Eiffel Tower is the symbol of Paris.</div>
+								</ons-col>
+								<ons-col width="40px"></ons-col>
+							</ons-row>
+						</ons-list-item>
+					</ons-list>
+			</ons-page>
+			</ons-gesture-detector>
+		</ons-navigator>
+		
 		<ons-template id="page2.html">
-		<ons-page>
-		  <ons-toolbar>
-			<div class="center">Lazy Repeat</div>
-		  </ons-toolbar>
+			<ons-gesture-detector>
+			<ons-page id="contatcs-page">
+				<ons-toolbar>
+					<div class="left navigation-bar__title app-name">NaviTouch</div>
+					<div class="right">
+					  <span class="toolbar-button--quiet navigation-bar__line-height">
+						  <i class="ion-android-more-vertical" style="font-size: 26px;"></i>
+						</span>
+					</div>
+				</ons-toolbar>
+				<div class="tab-bar tab-bar--top tab-bar--top-border">
+				  <label onclick="appNavigator.popPage('page2.html');"  class="tab-bar__item tab-bar--top-border__item">
+					<input type="radio" name="top-tab-bar-b">
+					<button class="tab-bar__button tab-bar--top-border__button">
+					  Around Me
+					</button>
+				  </label>
 
-		</ons-page>
+				  <label class="tab-bar__item tab-bar--top-border__item">
+					<input type="radio" name="top-tab-bar-b"  checked="checked">
+					<button class="tab-bar__button tab-bar--top-border__button">
+					  Contacts
+					</button>
+				  </label>
+				</div>
+			</ons-page>
+			</ons-gesture-detector>
 		</ons-template>
-		
-		<ons-tabbar>
-			<ons-tab page="page1.html" label="Home" icon="ion-home" active="true"></ons-tab>
-			<ons-tab page="page2.html" label="Comments" icon="ion-chatbox-working"></ons-tab>
-			<ons-tab page="page2.html" label="Tags" icon="ion-ios-pricetag"></ons-tab>
-			<ons-tab page="page2.html" label="Settings" icon="ion-ios-cog"></ons-tab>
-		</ons-tabbar>
-		
         <script type="text/javascript" src="cordova.js"></script>
     </body>
 </html>

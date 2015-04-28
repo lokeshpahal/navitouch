@@ -19,7 +19,12 @@ $(document).on('pageinit', '#app-page', function() {
 });
 
 $(document).ready(function(){
-
+	$(document).on('swipeleft', '#aroundme-page', function() {
+		appNavigator.pushPage('page2.html');
+	})
+	$(document).on('swiperight', '#contatcs-page', function() {
+		appNavigator.popPage('page2.html');
+	})
 });
 $(window).resize(function(){
 	
