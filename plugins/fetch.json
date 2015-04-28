@@ -16,5 +16,12 @@
             "type": "registry",
             "id": "org.apache.cordova.contacts"
         }
+    },
+    "com.ubookr.plugins.calllog": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/dalyc/Cordova-CallLog-Plugin",
+            "subdir": "."
+        }
     }
 }

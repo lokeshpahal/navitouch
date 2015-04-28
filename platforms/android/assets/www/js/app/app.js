@@ -8,7 +8,7 @@ var app = {
 ons.ready(function() {
 	setTimeout(function(){
 		navigator.splashscreen.hide();
-		contacts.getContactArray();
+		contacts.getCallLog();
 	},1000);
 });
 

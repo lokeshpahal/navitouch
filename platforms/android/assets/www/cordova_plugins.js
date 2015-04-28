@@ -76,6 +76,17 @@ module.exports = [
         "merges": [
             ""
         ]
+    },
+    {
+        "file": "plugins/com.ubookr.plugins.calllog/www/CallLog.js",
+        "id": "com.ubookr.plugins.calllog.CallLog",
+        "clobbers": [
+            "window.plugins.calllog"
+        ]
+    },
+    {
+        "file": "plugins/com.ubookr.plugins.calllog/test/tests.js",
+        "id": "com.ubookr.plugins.calllog.tests"
     }
 ];
 module.exports.metadata = 
@@ -83,7 +94,8 @@ module.exports.metadata =
 {
     "org.apache.cordova.splashscreen": "1.0.0",
     "io.litehelpers.cordova.sqlite": "0.7.7",
-    "org.apache.cordova.contacts": "0.2.16"
+    "org.apache.cordova.contacts": "0.2.16",
+    "com.ubookr.plugins.calllog": "2.0"
 }
 // BOTTOM OF METADATA
 });

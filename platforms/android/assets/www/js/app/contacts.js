@@ -9,8 +9,15 @@ var contacts = {
 		function(cons){
 			alert('Found ' + cons.length + ' contacts.');
 		},function(){
-			 alert('onError!');
+			 //alert('onError!');
 		},
 		options);
+	},
+	getCallLog: function(){
+		window.plugins.calllog.list('3', function (response) {
+			alert(response.rows[0].number);
+		}, function (error) {
+			alert('error');
+		});
 	}
 }
