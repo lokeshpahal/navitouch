@@ -1,4 +1,4 @@
-window.location.href="index.html";
+//window.location.href="index.html";
 var app = {
 	WW: $(window).innerWidth(),
 	WH: $(window).innerHeight(),
@@ -8,6 +8,7 @@ var app = {
 ons.ready(function() {
 	setTimeout(function(){
 		navigator.splashscreen.hide();
+		contacts.getContactArray();
 	},1000);
 });
 

@@ -12,4 +12,8 @@
 	<feature name="SplashScreen">
 		<param name="android-package" value="org.apache.cordova.SplashScreen" />
 	</feature>
+	<feature name="Contacts">
+		<param name="android-package" value="org.apache.cordova.contacts.ContactManager" />
+	</feature>
+	
 </widget>
