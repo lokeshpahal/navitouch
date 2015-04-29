@@ -44,7 +44,7 @@
 		
 		<ons-template id="page2.html">
 			<ons-gesture-detector>
-			<ons-page id="contatcs-page" ng-controller="contactListCtrl">
+			<ons-page id="contatcs-page" ng-controller="contactListCtrl" ng-device-backbutton="onDeviceBackButton($event)">
 				<ons-toolbar>
 					<div class="left navigation-bar__title app-name">NaviTouch</div>
 					<div class="right">

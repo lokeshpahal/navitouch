@@ -12,7 +12,7 @@ ons.ready(function() {
 	},1000);
 });
 
-$(document).on('pageinit', '#app-page', function() {
+$(document).on('pageinit', '#contatcs-page', function() {
 	page.setDeviceBackButtonHandler(function() {
 		
 	});

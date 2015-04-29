@@ -67,6 +67,14 @@ app.controller('contactListCtrl', ['$scope','$http', '$q', function($scope, $htt
   $scope.show = function(e) {
 	$scope.popover.show(e);
   };
+  
+  $scope.onDeviceBackButton = function($event) {
+		if ($event.callParentHandler) {
+			pageTabber.setActiveTab(0);
+		} else {
+			pageTabber.setActiveTab(0);
+		}
+	}
 }]);
 
 app.controller('aroundMeCtrl', function($scope) {
