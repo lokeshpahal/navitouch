@@ -26,82 +26,74 @@
         <title>Hello World</title>
     </head>
     <body>
-		<ons-navigator animation="slide" var="appNavigator">
-			<ons-gesture-detector>
-			<ons-page id="aroundme-page">
-				<ons-toolbar>
-					<div class="left navigation-bar__title app-name">NaviTouch</div>
-					<div class="right">
-					  <span class="toolbar-button--quiet navigation-bar__line-height">
-						  <i class="ion-android-more-vertical" style="font-size: 26px;"></i>
-						</span>
-					</div>
-				</ons-toolbar>
-				<div class="tab-bar tab-bar--top tab-bar--top-border">
-				  <label class="tab-bar__item tab-bar--top-border__item">
-					<input type="radio" name="top-tab-bar-b" checked="checked">
-					<button class="tab-bar__button tab-bar--top-border__button">
-					  Around Me
-					</button>
-				  </label>
-
-				  <label onclick="appNavigator.pushPage('page2.html');" class="tab-bar__item tab-bar--top-border__item">
-					<input type="radio" name="top-tab-bar-b">
-					<button class="tab-bar__button tab-bar--top-border__button">
-					  Contacts
-					</button>
-				  </label>
-				</div>
-					<ons-list>
-						<ons-list-item modifier="chevron" class="list-item-container">
-							<ons-row>
-								<ons-col width="75px">
-								  <img src="http://onsen.io/patterns/images/location1.png" class="thumbnail">
-								</ons-col>
-								<ons-col>
-								  <div class="name">Eiffel Tower</div>
-								  <div class="location">
-									<i class="fa fa-map-marker"></i> Paris, France
-								  </div>
-								  <div class="desc">Eiffel Tower is the symbol of Paris.</div>
-								</ons-col>
-								<ons-col width="40px"></ons-col>
-							</ons-row>
-						</ons-list-item>
-					</ons-list>
-			</ons-page>
-			</ons-gesture-detector>
-		</ons-navigator>
 		
-		<ons-template id="page2.html">
+		<ons-template id="page1.html">
 			<ons-gesture-detector>
-			<ons-page id="contatcs-page">
+			<ons-page id="aroundme-page" ng-controller="aroundMeCtrl">
 				<ons-toolbar>
 					<div class="left navigation-bar__title app-name">NaviTouch</div>
 					<div class="right">
-					  <span class="toolbar-button--quiet navigation-bar__line-height">
-						  <i class="ion-android-more-vertical" style="font-size: 26px;"></i>
+					  <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="show('#top-right-menu1')">
+						  <i class="ion-android-more-vertical" style="font-size: 26px;" id="top-right-menu1"></i>
 						</span>
 					</div>
-				</ons-toolbar>
-				<div class="tab-bar tab-bar--top tab-bar--top-border">
-				  <label onclick="appNavigator.popPage('page2.html');"  class="tab-bar__item tab-bar--top-border__item">
-					<input type="radio" name="top-tab-bar-b">
-					<button class="tab-bar__button tab-bar--top-border__button">
-					  Around Me
-					</button>
-				  </label>
-
-				  <label class="tab-bar__item tab-bar--top-border__item">
-					<input type="radio" name="top-tab-bar-b"  checked="checked">
-					<button class="tab-bar__button tab-bar--top-border__button">
-					  Contacts
-					</button>
-				  </label>
-				</div>
+				</ons-toolbar>	
 			</ons-page>
 			</ons-gesture-detector>
 		</ons-template>
+		
+		<ons-template id="page2.html">
+			<ons-gesture-detector>
+			<ons-page id="contatcs-page" ng-controller="contactListCtrl">
+				<ons-toolbar>
+					<div class="left navigation-bar__title app-name">NaviTouch</div>
+					<div class="right">
+						<span class="toolbar-button--quiet navigation-bar__line-height" ng-click="show('#top-right-menu')">
+						  <i class="ion-android-more-vertical" style="font-size: 26px;" id="top-right-menu"></i>
+						</span>
+					</div>
+				</ons-toolbar>
+				<ons-list>
+					<ons-list-item modifier="chevron" class="list-item-container" ons-lazy-repeat="contactsDelegate">
+						<ons-row>
+							<ons-col width="75px">
+							  <img ng-src="http://lorempixel.com/60/60/?{{item.rand}}" class="item-thum"></img>
+							</ons-col>
+						  <ons-col>
+							<header>
+							  <span class="item-title">{{item.title}}</span>
+							  <span class="item-label">{{item.label}}</span>
+							</header>
+							  <div ng-show="item.desc==''"><p><span style='opacity: 0.7;'><ons-icon icon='fa-spinner' spin='true'></ons-icon> Loading bacon...</p></span></div>
+							  <p class="item-desc">{{ item.desc }}</p>
+						  </ons-col>
+						  <ons-col width="40px"></ons-col>
+						</ons-row>
+					</ons-list-item>
+				</ons-list>
+			</ons-page>
+			</ons-gesture-detector>
+		</ons-template>
+		
+		<ons-tabbar var="pageTabber">
+			<ons-tab page="page1.html" active="true" animation="fade">
+				<ons-icon icon="ion-home" class="tab-icon"></ons-icon>
+			</ons-tab>
+			<ons-tab page="page2.html" animation="fade">
+				<ons-icon icon="ion-person" class="tab-icon"></ons-icon>
+			</ons-tab>
+		</ons-tabbar>
+		<script type="text/ons-template" id="popover.html">
+		  <ons-popover direction="up down" cancelable>
+			<ons-list>
+				<ons-list-item class="list__item--tappable list__item__line-height" modifier="">Numbers</ons-list-item>
+				<ons-list-item class="list__item--tappable list__item__line-height" modifier="">One</ons-list-item>
+				<ons-list-item class="list__item--tappable list__item__line-height" modifier="">Two</ons-list-item>
+				<ons-list-item class="list__item--tappable list__item__line-height" modifier="">Three</ons-list-item>
+			</ons-list>
+		  </ons-popover>
+		</script>
+		
         <script type="text/javascript" src="cordova.js"></script>
     </body>
 </html>

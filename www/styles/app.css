@@ -66,6 +66,41 @@
   font-size: 13px;
 }
 
+#aroundme-page .ons-page-inner{
+	background:url("../img/around-me-icon.png") no-repeat 50% 50% !important;
+}
+#contatcs-page .ons-list-inner{position:relative;}
+
+#contatcs-page .list-item-container {
+  line-height: 1;
+  padding: 5px 0px 5px 5px;
+}
+
+#contatcs-page .thumbnail {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+#contatcs-page .name {
+  font-weight: 500;
+  line-height: 16px;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+#contatcs-page .location {
+  font-size: 14px;
+  opacity: 0.4;
+  margin-bottom: 6px;
+}
+
+#contatcs-page .desc {
+  line-height: 1.2;
+  font-size: 13px;
+}
+
 
 .login-form,.login-form-otp {
   text-align: center;
