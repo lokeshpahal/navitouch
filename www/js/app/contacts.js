@@ -1,24 +1,36 @@
 var contacts = {
 	list: [],
-	callLogList: [],
-	fields: ["id", "name", "phoneNumbers", "photos"],
+	callLogList: null,
+	fields: ["id", "name", "displayName", "phoneNumbers", "photos"],
 	getContactArray: function(){
 		var options      = new ContactFindOptions();
 		options.filter   = "";
 		options.multiple = true;
 		navigator.contacts.find(this.fields, 
 		function(cons){
-			alert('Found ' + cons.length + ' contacts.');
+			contacts.list = cons;
 		},function(){
 			 //alert('onError!');
 		},
 		options);
 	},
+	searchInList: function(number){
+		var c = $.grep(contacts.list, function(e){ return e.phoneNumbers.value == number; });
+		//alert(JSON.stringify(c))
+		return c;
+	},
 	getCallLog: function(){
 		window.plugins.calllog.list('3', function (response) {
-			alert(response.rows[0].number);
+			contacts.callLogList = response.rows.unique('number');
 		}, function (error) {
-			//alert('error');
+			//error
+		});
+	},
+	showContact: function(number){
+		window.plugins.calllog.show(number,function(){
+			// success
+		}, function(error){
+			// error
 		});
 	},
 	drawAllList: function(){
@@ -41,31 +53,22 @@ app.controller('contactListCtrl', ['$scope','$http', '$q', function($scope, $htt
 		  desc: '',
 		  rand: Math.random()
 		};
-		$http.get('https://baconipsum.com/api/?type=meat-and-filler&sentences=1', {timeout: itemScope.canceler.promise})
-		.success(function(data){
-			itemScope.item.desc = data[0]; itemScope.item.label = itemScope.item.desc.substr(0, itemScope.item.desc.indexOf(" ")) + 'bacon'})
-		.error(function(){
-			itemScope.item.desc = 'No bacon lorem ipsum'; itemScope.item.label = 'No bacon'
-		});
+		//itemScope.item.desc = 'test';
+		itemScope.item.desc = contacts.callLogList[index].number;
+		//itemScope.item.label = contacts.searchInList(contacts.callLogList[index].number);
+		itemScope.item.label = 'lorem';
+		
 	  }
 	},
 	calculateItemHeight : function(index) {
 	  return 91;
 	},
 	countItems : function() {
-	  return 10000000;
+	  return contacts.callLogList.length;
 	},
 	destroyItemScope: function(index, itemScope) {
 	  itemScope.canceler.resolve();
 	}
-  };
-  
-  ons.createPopover('popover.html').then(function(popover) {
-	$scope.popover = popover;
-  });
-  
-  $scope.show = function(e) {
-	$scope.popover.show(e);
   };
   
   $scope.onDeviceBackButton = function($event) {
@@ -78,11 +81,5 @@ app.controller('contactListCtrl', ['$scope','$http', '$q', function($scope, $htt
 }]);
 
 app.controller('aroundMeCtrl', function($scope) {
-  ons.createPopover('popover.html').then(function(popover) {
-    $scope.popover = popover;
-  });
   
-  $scope.show = function(e) {
-    $scope.popover.show(e);
-  };
 });

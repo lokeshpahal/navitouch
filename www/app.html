@@ -33,7 +33,7 @@
 				<ons-toolbar>
 					<div class="left navigation-bar__title app-name">NaviTouch</div>
 					<div class="right">
-					  <span class="toolbar-button--quiet navigation-bar__line-height" ng-click="show('#top-right-menu1')">
+					  <span class="toolbar-button--quiet navigation-bar__line-height showPopover" data-popid="#top-right-menu1">
 						  <i class="ion-android-more-vertical" style="font-size: 26px;" id="top-right-menu1"></i>
 						</span>
 					</div>
@@ -48,7 +48,7 @@
 				<ons-toolbar>
 					<div class="left navigation-bar__title app-name">NaviTouch</div>
 					<div class="right">
-						<span class="toolbar-button--quiet navigation-bar__line-height" ng-click="show('#top-right-menu')">
+						<span class="toolbar-button--quiet navigation-bar__line-height showPopover" data-popid="#top-right-menu">
 						  <i class="ion-android-more-vertical" style="font-size: 26px;" id="top-right-menu"></i>
 						</span>
 					</div>
@@ -56,7 +56,7 @@
 				<ons-list>
 					<ons-list-item modifier="chevron" class="list-item-container" ons-lazy-repeat="contactsDelegate">
 						<ons-row>
-							<ons-col width="75px">
+							<ons-col width="75px" class="showContact" data-number='{{item.desc}}'>
 							  <img ng-src="http://lorempixel.com/60/60/?{{item.rand}}" class="item-thum"></img>
 							</ons-col>
 						  <ons-col>

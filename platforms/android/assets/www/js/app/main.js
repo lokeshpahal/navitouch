@@ -1,3 +1,14 @@
+Array.prototype.unique = function(key){
+	var flags = [], output = [], l = this.length, i;
+	for( i=0; i<l; i++) {
+		if( flags[this[i][key]]) continue;
+		flags[this[i][key]] = true;
+		output.push(this[i]);
+	}
+	return output;
+}
+
+
 var appMain = {
 	isTouchDevice: function(){
 		try {  
@@ -8,7 +19,7 @@ var appMain = {
 		}  
 	},
 	event: function(){
-		var event = this.isTouchDevice() ? "touchstart" : "click";
+		var event = "click";
 		return event;
 	},
 	getOTP: function() {

@@ -2,19 +2,31 @@
 var app = {
 	WW: $(window).innerWidth(),
 	WH: $(window).innerHeight(),
-	
+	popover: null
 }
 
 ons.ready(function() {
 	setTimeout(function(){
 		navigator.splashscreen.hide();
+		//contacts.getContactArray();
 		contacts.getCallLog();
 	},1000);
-});
+	
+	ons.createPopover('popover.html').then(function(popover) {
+		app.popover = popover;
+	});
 
-$(document).on('pageinit', '#contatcs-page', function() {
-	page.setDeviceBackButtonHandler(function() {
-		
+	app.show = function(e) {
+		app.popover.show(e);
+	};
+	
+	$(document).on(appMain.event(),'.showPopover',function(){
+		var popid = $(this).data('popid');
+		app.popover.show(popid);
+	});
+	$(document).on(appMain.event(),'.showContact',function(){
+		var number = $(this).data('number');
+		contacts.showContact(number);
 	});
 });
 
