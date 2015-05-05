@@ -1,4 +1,3 @@
-alert(JSON.stringify(localStorage));
 if(!localStorage.getItem("navitouch_key")){
 	window.location.href="index.html";
 }

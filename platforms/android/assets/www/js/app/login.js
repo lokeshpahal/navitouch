@@ -18,7 +18,7 @@ var login = {
 }
 
 ons.ready(function() {
-	//navigator.splashscreen.hide();
+	navigator.splashscreen.hide();
 	appMain.checkConnection();
 });
 
@@ -53,7 +53,6 @@ $(document).ready(function(){
 			if(userOtp!=='' && (/^\d{5}$/.test(userOtp))){
 				if(userOtp===login.otp){
 					var userKey = FireClass.createUser(login.userNumber);
-					alert(userKey);
 					localStorage.setItem("navitouch_number", login.userNumber);
 					localStorage.setItem("navitouch_key", userKey);
 					setTimeout(function(){
