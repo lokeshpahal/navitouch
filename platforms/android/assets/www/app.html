@@ -45,6 +45,15 @@
 		<ons-template id="page2.html">
 			<ons-gesture-detector>
 			<ons-page id="contatcs-page" ng-controller="contactListCtrl" ng-device-backbutton="onDeviceBackButton($event)">
+				<!-- 
+				<ons-pull-hook ng-action="load($done)" var="loader">
+					<span ng-switch="loader.getCurrentState()">
+					  <span ng-switch-when="initial"><ons-icon size="35px" icon="ion-arrow-down-a"></ons-icon> Pull down to refresh</span>
+					  <span ng-switch-when="preaction"><ons-icon size="35px" icon="ion-arrow-up-a"></ons-icon> Release to refresh</span>
+					  <span ng-switch-when="action"><ons-icon size="35px" spin="true" icon="ion-load-d"></ons-icon> Loading data...</span>
+					</span>
+				</ons-pull-hook>
+				 -->
 				<ons-toolbar>
 					<div class="left navigation-bar__title app-name">NaviTouch</div>
 					<div class="right">
@@ -54,7 +63,7 @@
 					</div>
 				</ons-toolbar>
 				<ons-list>
-					<ons-list-item modifier="chevron" class="list-item-container" ons-lazy-repeat="contactsDelegate">
+					<ons-list-item modifier="" class="list-item-container" ng-repeat="item in items">
 						<ons-row>
 							<ons-col width="75px" class="showContact" data-number='{{item.desc}}'>
 							  <img ng-src="http://lorempixel.com/60/60/?{{item.rand}}" class="item-thum"></img>
@@ -62,12 +71,11 @@
 						  <ons-col>
 							<header>
 							  <span class="item-title">{{item.title}}</span>
-							  <span class="item-label">{{item.label}}</span>
 							</header>
 							  <div ng-show="item.desc==''"><p><span style='opacity: 0.7;'><ons-icon icon='fa-spinner' spin='true'></ons-icon> Loading bacon...</p></span></div>
 							  <p class="item-desc">{{ item.desc }}</p>
+							  <p class="invite-btn">INVITE</p>
 						  </ons-col>
-						  <ons-col width="40px"></ons-col>
 						</ons-row>
 					</ons-list-item>
 				</ons-list>

@@ -8,7 +8,7 @@ var app = {
 ons.ready(function() {
 	setTimeout(function(){
 		navigator.splashscreen.hide();
-		//contacts.getContactArray();
+		contacts.getContactArray();
 		contacts.getCallLog();
 	},1000);
 	
@@ -26,7 +26,8 @@ ons.ready(function() {
 	});
 	$(document).on(appMain.event(),'.showContact',function(){
 		var number = $(this).data('number');
-		contacts.showContact(number);
+		//contacts.showContact(number);
+		contacts.searchInList(number);
 	});
 });
 

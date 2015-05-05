@@ -1,8 +1,8 @@
 Array.prototype.unique = function(key){
 	var flags = [], output = [], l = this.length, i;
 	for( i=0; i<l; i++) {
-		if( flags[this[i][key]]) continue;
-		flags[this[i][key]] = true;
+		if( flags[this[i][key].slice(-10)]) continue;
+		flags[this[i][key].slice(-10)] = true;
 		output.push(this[i]);
 	}
 	return output;
