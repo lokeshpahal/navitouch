@@ -1,3 +1,4 @@
+.app-name{padding-left:10px;box-sizing:border-box;}
 .login-page .page__background{background-color:#1865a9}
 .login-page .ons-tab-bar__footer{display:none;}
 .login-page .c-code{width:15%;padding:0;text-align:center;}
@@ -108,7 +109,8 @@
   margin: 0;
   background: #eb5e2f;
   font-size: 14px;
-  color: #fff;}
+  color: #fff;
+ }
 
 
 .login-form,.login-form-otp {
