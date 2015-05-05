@@ -23,5 +23,11 @@
             "url": "https://github.com/dalyc/Cordova-CallLog-Plugin",
             "subdir": "."
         }
+    },
+    "org.apache.cordova.network-information": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.network-information"
+        }
     }
 }

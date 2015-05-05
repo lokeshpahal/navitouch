@@ -1,4 +1,6 @@
-//window.location.href="index.html";
+if(!localStorage.getItem("navitouch_key")){
+	window.location.href="index.html";
+}
 var app = {
 	WW: $(window).innerWidth(),
 	WH: $(window).innerHeight(),

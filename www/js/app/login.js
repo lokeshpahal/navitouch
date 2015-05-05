@@ -2,10 +2,12 @@ var login = {
 	WW: $(window).innerWidth(),
 	WH: $(window).innerHeight(),
 	otp: null,
+	userNumber: null,
 	sendOTP: function(){
 		var mobNumber = $.trim($('.login-form .c-number').val());
 		if (/^\d{10}$/.test(mobNumber)) {
 			login.otp=appMain.getOTP();
+			login.userNumber = mobNumber;
 			navi.pushPage('page1.html',{ animation : 'lift' })
 		}
 	},
@@ -16,9 +18,8 @@ var login = {
 }
 
 ons.ready(function() {
-	// Hide Cordova splash screen when Onsen UI is loaded completely
-	// API reference: https://github.com/apache/cordova-plugin-splashscreen/blob/master/doc/index.md
-	navigator.splashscreen.hide();
+	//navigator.splashscreen.hide();
+	appMain.checkConnection();
 });
 
 $(document).on('pageinit', '#first-page', function() {
@@ -46,12 +47,18 @@ $(document).ready(function(){
 	});
 	$(document).on(appMain.event(),'.login-button-OTP',function(){
 		//navi.pushPage('app.html')
-		var userOtp = $.trim($('.mobile-number').val());
+		var userOtp = parseInt($.trim($('.mobile-number').val()));
 		$('.mobile-number').blur();
 		setTimeout(function(){
 			if(userOtp!=='' && (/^\d{5}$/.test(userOtp))){
 				if(userOtp===login.otp){
-					window.location.href = 'app.html';
+					var userKey = FireClass.createUser(login.userNumber);
+					alert(userKey);
+					localStorage.setItem("navitouch_number", login.userNumber);
+					localStorage.setItem("navitouch_key", userKey);
+					setTimeout(function(){
+						window.location.href = 'app.html';
+					},500);
 				}else{
 					$('.mobile-number').val('');
 					ons.notification.alert({message: 'Click button to send Again.',title: 'Invalid OTP',});

@@ -14,6 +14,9 @@
     <feature name="CallLog">
         <param name="android-package" value="com.ubookr.plugins.CallLogPlugin" />
     </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
     <name>NaviTouch</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -22,5 +25,6 @@
         Apache Cordova Team
     </author>
     <content src="app.html" />
+    <access origin="*" />
     <preference name="splashscreen" value="splash" />
 </widget>

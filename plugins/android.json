@@ -23,6 +23,10 @@
                         {
                             "xml": "<feature name=\"CallLog\"><param name=\"android-package\" value=\"com.ubookr.plugins.CallLogPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -40,6 +44,10 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
                             "count": 1
                         }
                     ],
@@ -64,6 +72,9 @@
             "PACKAGE_NAME": "com.navitouch.navitouch"
         },
         "com.ubookr.plugins.calllog": {
+            "PACKAGE_NAME": "com.navitouch.navitouch"
+        },
+        "org.apache.cordova.network-information": {
             "PACKAGE_NAME": "com.navitouch.navitouch"
         }
     },
