@@ -102,6 +102,13 @@ module.exports = [
         "clobbers": [
             "Connection"
         ]
+    },
+    {
+        "file": "plugins/com.neton.cordova.diagnostic/www/diagnostic.js",
+        "id": "com.neton.cordova.diagnostic.diagnostic",
+        "clobbers": [
+            "diagnostic"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -112,7 +119,8 @@ module.exports.metadata =
     "org.apache.cordova.contacts": "0.2.16",
     "com.ubookr.plugins.calllog": "2.0",
     "org.apache.cordova.network-information": "0.2.15",
-    "org.apache.cordova.geolocation": "0.3.12"
+    "org.apache.cordova.geolocation": "0.3.12",
+    "com.neton.cordova.diagnostic": "0.2.3"
 }
 // BOTTOM OF METADATA
 });

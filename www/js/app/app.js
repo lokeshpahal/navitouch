@@ -40,6 +40,9 @@ $(document).ready(function(){
 	$(document).on('swiperight', '#contatcs-page', function() {
 		pageTabber.setActiveTab(0);
 	})
+    $(document).on('click','.check-in',function(){
+        appMain.checkGPS();
+    });
 });
 $(window).resize(function(){
 	

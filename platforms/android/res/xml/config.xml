@@ -27,4 +27,7 @@
     <content src="app.html" />
     <access origin="*" />
     <preference name="splashscreen" value="splash" />
+    <feature name="Diagnostic">
+        <param name="android-package" value="com.neton.cordova.diagnostic.Diagnostic" />
+    </feature>
 </widget>
