@@ -53,8 +53,8 @@ $(document).ready(function(){
 			if(userOtp!=='' && (/^\d{5}$/.test(userOtp))){
 				if(userOtp===login.otp){
 					var userKey = FireClass.createUser(login.userNumber);
-					localStorage.setItem("navitouch_number", login.userNumber);
-					localStorage.setItem("navitouch_key", userKey);
+					storage.setItem("navitouch_number", login.userNumber);
+					storage.setItem("navitouch_key", userKey);
 					setTimeout(function(){
 						window.location.href = 'app.html';
 					},500);

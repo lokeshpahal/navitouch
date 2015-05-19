@@ -111,7 +111,8 @@ module.exports.metadata =
     "io.litehelpers.cordova.sqlite": "0.7.7",
     "org.apache.cordova.contacts": "0.2.16",
     "com.ubookr.plugins.calllog": "2.0",
-    "org.apache.cordova.network-information": "0.2.15"
+    "org.apache.cordova.network-information": "0.2.15",
+    "org.apache.cordova.geolocation": "0.3.12"
 }
 // BOTTOM OF METADATA
 });

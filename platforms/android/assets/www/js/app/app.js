@@ -1,4 +1,4 @@
-if(!localStorage.getItem("navitouch_key")){
+if(!storage.getItem("navitouch_key")){
 	window.location.href="index.html";
 }
 var app = {

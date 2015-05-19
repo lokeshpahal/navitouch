@@ -49,6 +49,14 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 1
                         }
                     ],
                     "/manifest": [
@@ -75,6 +83,9 @@
             "PACKAGE_NAME": "com.navitouch.navitouch"
         },
         "org.apache.cordova.network-information": {
+            "PACKAGE_NAME": "com.navitouch.navitouch"
+        },
+        "org.apache.cordova.geolocation": {
             "PACKAGE_NAME": "com.navitouch.navitouch"
         }
     },

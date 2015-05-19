@@ -8,6 +8,7 @@ Array.prototype.unique = function(key){
 	return output;
 }
 
+var storage = window.localStorage;
 
 var appMain = {
 	isTouchDevice: function(){
