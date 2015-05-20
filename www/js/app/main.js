@@ -59,7 +59,7 @@ var appMain = {
     },
     getLocationS: function(position){
         modal.hide();
-        alert(position.coords.latitude,position.coords.longitude)
+        alert(position.coords.latitude+'<-=->'+position.coords.longitude)
     },
     getLocationE: function(error){
         modal.hide()
