@@ -41,6 +41,7 @@ $(document).ready(function(){
         pageTabber.setActiveTab(0);
     })
     $(document).on('click','.check-in',function(){
+        modal.show();
         appMain.checkGPS();
     });
 });

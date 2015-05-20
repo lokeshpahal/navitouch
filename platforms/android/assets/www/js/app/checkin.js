@@ -1,5 +1,5 @@
-app.controller('MyCtrl', ['$scope','$http', '$q', function($scope, $http, $q) {
-    
+app.controller('MyCtrl', ['$scope', function($scope) {
+    $scope.locList = [1,3,4,5,6,6];
 }]);
 
 
@@ -70,9 +70,7 @@ var checkin = {
 
 
 $(document).ready(function(){
-
     checkin.getLocation();
-
     $(document).on('click','.checkin-back',function(){
         checkin.goBack();
     })
