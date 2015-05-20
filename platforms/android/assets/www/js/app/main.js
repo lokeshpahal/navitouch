@@ -41,10 +41,27 @@ var appMain = {
         alert('Connection type: ' + states[networkState]);
     },
     checkGPS: function(){
-        var isEnabled = Diagnostic.isGpsEnabled();
-        alert(isEnabled);
-        if(isEnabled==false){
-            Diagnostic.switchToLocationSettings();
+        window.plugins.diagnostic.isLocationEnabled(appMain.checkGPSS,appMain.checkGPSE);
+    },
+    checkGPSS: function(result){
+        if(!result){
+            window.plugins.diagnostic.switchToLocationSettings();
+        }else{
+            appMain.getLocation();
         }
+    },
+    checkGPSE: function(result){
+        //alert('error');
+    },
+    getLocation: function(){
+        modal.show();
+        navigator.geolocation.getCurrentPosition(appMain.getLocationS, appMain.getLocationE);
+    },
+    getLocationS: function(position){
+        modal.hide();
+        alert(position.coords.latitude,position.coords.longitude)
+    },
+    getLocationE: function(error){
+        modal.hide()
     }
 }

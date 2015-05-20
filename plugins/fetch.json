@@ -42,5 +42,12 @@
             "url": "https://github.com/oaugustus/phonegap-diagnostic-plugin.git",
             "subdir": "."
         }
+    },
+    "cordova.plugins.diagnostic": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/mablack/cordova-diagnostic-plugin.git",
+            "subdir": "."
+        }
     }
 }

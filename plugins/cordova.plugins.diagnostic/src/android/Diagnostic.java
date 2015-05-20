@@ -16,7 +16,7 @@
        specific language governing permissions and limitations
        under the License.
 */
-package com.neton.cordova.diagnostic;
+package com.collectme.cordova.diagnostic;
 
 import java.util.TimeZone;
 
@@ -34,9 +34,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.provider.Settings;
 import android.location.LocationManager;
 import android.location.LocationListener;
+import android.net.wifi.WifiManager;
 
 public class Diagnostic extends CordovaPlugin {
     public static final String TAG = "Diagnostic";
@@ -67,15 +69,21 @@ public class Diagnostic extends CordovaPlugin {
      * @return                  True if the action was valid, false if not.
      */
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-      JSONObject r = new JSONObject();
+        JSONObject r = new JSONObject();
 
         if (action.equals("switchToLocationSettings")){
-          switchToLocationSettings();
-          callbackContext.success();            
-        } else
-        if (action.equals("isGpsEnabled")) {
-            r.put("success", isGpsEnabled());
-            callbackContext.success(r);
+            switchToLocationSettings();
+            callbackContext.success();
+        } else if(action.equals("isLocationEnabled") || action.equals("isLocationAuthorized") || action.equals("isLocationEnabledSetting")) {
+            // r.put("success", isGpsEnabled());
+            // r.put("success", isGpsEnabled() || isNetworkEnabled());
+            callbackContext.success(isGpsEnabled() ? 1 : 0);
+        } else if(action.equals("isWifiEnabled")) {
+            // r.put("success", isWifiEnabled());
+            callbackContext.success(isWifiEnabled() ? 1 : 0);
+        } else if(action.equals("isCameraEnabled")) {
+            // r.put("success", isCameraEnabled());
+            callbackContext.success(isCameraEnabled() ? 1 : 0);
         }
         else {
             return false;
@@ -85,28 +93,45 @@ public class Diagnostic extends CordovaPlugin {
 
     /**
      * Check device settings for GPS.
-     * 
+     *
      * @returns {boolean} The status of GPS in device settings.
      */
     public boolean isGpsEnabled() {
-            boolean result = isLocationProviderEnabled(LocationManager.GPS_PROVIDER);
-            Log.d(TAG, "GPS enabled: " + result);
-            return result;
-    }    
+        boolean result = isLocationProviderEnabled(LocationManager.GPS_PROVIDER);
+        Log.d(TAG, "GPS enabled: " + result);
+        return result;
+    }
+
+    public boolean isNetworkEnabled() {
+        boolean result = isLocationProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        Log.d(TAG, "Network enabled: " + result);
+        return result;
+    }
+
+    public boolean isWifiEnabled() {
+        WifiManager wifiManager = (WifiManager) this.cordova.getActivity().getSystemService(Context.WIFI_SERVICE);
+        boolean result = wifiManager.isWifiEnabled();
+        return result;
+    }
+
+    public boolean isCameraEnabled() {
+        PackageManager pm = this.cordova.getActivity().getPackageManager();
+        boolean result = pm.hasSystemFeature(PackageManager.FEATURE_CAMERA);
+        return result;
+    }
 
     /**
      * Requests that the user enable the location in device settings.
      */
     public void switchToLocationSettings() {
-          Log.d(TAG, "Switch to Location Settings");
-          Intent settingsIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-          cordova.getActivity().startActivity(settingsIntent);
+        Log.d(TAG, "Switch to Location Settings");
+        Intent settingsIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        cordova.getActivity().startActivity(settingsIntent);
     }
 
-    private boolean isLocationProviderEnabled(String provider) {     
-        LocationManager locationManager = (LocationManager) cordova.getActivity().getSystemService(Context.LOCATION_SERVICE);
+    private boolean isLocationProviderEnabled(String provider) {
+        LocationManager locationManager = (LocationManager) this.cordova.getActivity().getSystemService(Context.LOCATION_SERVICE);
         return locationManager.isProviderEnabled(provider);
     }
-
 
 }

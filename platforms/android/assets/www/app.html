@@ -2,109 +2,114 @@
 <html lang="en" ng-app="app">
     <head>
         <meta charset="utf-8">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="mobile-web-app-capable" content="yes">
-		<meta name="format-detection" content="telephone=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" href="css/onsenui.css">  
-		<link rel="stylesheet" href="styles/onsen-css-components.css">  
-		<link rel="stylesheet" href="styles/app.css"/>
-		
-		<script src="js/angular/angular.js"></script>    
-		<script src="js/onsenui.js"></script>    
-		<script src="js/jquery.min.js"></script> 
-		<script type="text/javascript" src="js/app/firebaseBase.js"></script>
-		<script type="text/javascript" src="js/app/firebase.js"></script>
-		<script src="js/app/main.js"></script>		
-		<script src="js/app/contacts.js"></script>		
-		<script src="js/app/app.js"></script>    
-		
-		<script>
-			var app = angular.module('app', ['onsen']);
-		</script>
-		
+        <link rel="stylesheet" href="styles/onsen-css-components.css">  
+        <link rel="stylesheet" href="styles/app.css"/>
+
+        <script src="js/angular/angular.js"></script>    
+        <script src="js/onsenui.js"></script>    
+        <script src="js/jquery.min.js"></script> 
+        <script type="text/javascript" src="js/app/firebaseBase.js"></script>
+        <script type="text/javascript" src="js/app/firebase.js"></script>
+        <script src="js/app/main.js"></script>		
+        <script src="js/app/contacts.js"></script>		
+        <script src="js/app/app.js"></script>    
+
+        <script>
+            var app = angular.module('app', ['onsen']);
+        </script>
+
         <title>Hello World</title>
     </head>
     <body>
-		
-		<ons-template id="page1.html">
-			<ons-gesture-detector>
-			<ons-page id="aroundme-page" ng-controller="aroundMeCtrl">
-				<ons-toolbar>
-					<div class="left navigation-bar__title app-name">NaviTouch</div>
-					<div class="right">
-					  <span class="toolbar-button--quiet navigation-bar__line-height showPopover" data-popid="#top-right-menu1">
-						  <i class="ion-android-more-vertical" style="font-size: 26px;" id="top-right-menu1"></i>
-						</span>
-					</div>
-				</ons-toolbar>	
-			</ons-page>
-			</ons-gesture-detector>
+
+        <ons-template id="page1.html">
+            <ons-gesture-detector>
+                <ons-page id="aroundme-page" ng-controller="aroundMeCtrl">
+                    <ons-toolbar>
+                        <div class="left navigation-bar__title app-name">NaviTouch</div>
+                        <div class="right">
+                            <span class="toolbar-button--quiet navigation-bar__line-height showPopover" data-popid="#top-right-menu1">
+                                <i class="ion-android-more-vertical" style="font-size: 26px;" id="top-right-menu1"></i>
+                            </span>
+                        </div>
+                    </ons-toolbar>	
+                </ons-page>
+            </ons-gesture-detector>
             <div class="check-in"><ons-icon icon="fa-anchor" size="25px" fixed-width="true"></ons-icon></div>
-		</ons-template>
-		
-		<ons-template id="page2.html">
-			<ons-gesture-detector>
-			<ons-page id="contatcs-page" ng-controller="contactListCtrl" ng-device-backbutton="onDeviceBackButton($event)">
-				<!-- 
-				<ons-pull-hook ng-action="load($done)" var="loader">
-					<span ng-switch="loader.getCurrentState()">
-					  <span ng-switch-when="initial"><ons-icon size="35px" icon="ion-arrow-down-a"></ons-icon> Pull down to refresh</span>
-					  <span ng-switch-when="preaction"><ons-icon size="35px" icon="ion-arrow-up-a"></ons-icon> Release to refresh</span>
-					  <span ng-switch-when="action"><ons-icon size="35px" spin="true" icon="ion-load-d"></ons-icon> Loading data...</span>
-					</span>
-				</ons-pull-hook>
-				 -->
-				<ons-toolbar>
-					<div class="left navigation-bar__title app-name">NaviTouch</div>
-					<div class="right">
-						<span class="toolbar-button--quiet navigation-bar__line-height showPopover" data-popid="#top-right-menu">
-						  <i class="ion-android-more-vertical" style="font-size: 26px;" id="top-right-menu"></i>
-						</span>
-					</div>
-				</ons-toolbar>
-				<ons-list>
-					<ons-list-item modifier="" class="list-item-container" ng-repeat="item in items">
-						<ons-row>
-							<ons-col width="75px" class="showContact" data-number='{{item.desc}}'>
-							  <img ng-src="http://lorempixel.com/60/60/?{{item.rand}}" class="item-thum"></img>
-							</ons-col>
-						  <ons-col>
-							<header>
-							  <span class="item-title">{{item.title}}</span>
-							</header>
-							  <div ng-show="item.desc==''"><p><span style='opacity: 0.7;'><ons-icon icon='fa-spinner' spin='true'></ons-icon> Loading bacon...</p></span></div>
-							  <p class="item-desc">{{ item.desc }}</p>
-							  <p class="invite-btn">INVITE</p>
-						  </ons-col>
-						</ons-row>
-					</ons-list-item>
-				</ons-list>
-			</ons-page>
-			</ons-gesture-detector>
-		</ons-template>
-		
-		<ons-tabbar var="pageTabber">
-			<ons-tab page="page1.html" active="true" animation="fade">
-				<ons-icon icon="ion-home" class="tab-icon"></ons-icon>
-			</ons-tab>
-			<ons-tab page="page2.html" animation="fade">
-				<ons-icon icon="ion-person" class="tab-icon"></ons-icon>
-			</ons-tab>
-		</ons-tabbar>
-		<script type="text/ons-template" id="popover.html">
+        </ons-template>
+
+        <ons-template id="page2.html">
+            <ons-gesture-detector>
+                <ons-page id="contatcs-page" ng-controller="contactListCtrl" ng-device-backbutton="onDeviceBackButton($event)">
+                    <!-- 
+<ons-pull-hook ng-action="load($done)" var="loader">
+<span ng-switch="loader.getCurrentState()">
+<span ng-switch-when="initial"><ons-icon size="35px" icon="ion-arrow-down-a"></ons-icon> Pull down to refresh</span>
+<span ng-switch-when="preaction"><ons-icon size="35px" icon="ion-arrow-up-a"></ons-icon> Release to refresh</span>
+<span ng-switch-when="action"><ons-icon size="35px" spin="true" icon="ion-load-d"></ons-icon> Loading data...</span>
+</span>
+</ons-pull-hook>
+-->
+                    <ons-toolbar>
+                        <div class="left navigation-bar__title app-name">NaviTouch</div>
+                        <div class="right">
+                            <span class="toolbar-button--quiet navigation-bar__line-height showPopover" data-popid="#top-right-menu">
+                                <i class="ion-android-more-vertical" style="font-size: 26px;" id="top-right-menu"></i>
+                            </span>
+                        </div>
+                    </ons-toolbar>
+                    <ons-list>
+                        <ons-list-item modifier="" class="list-item-container" ng-repeat="item in items">
+                            <ons-row>
+                                <ons-col width="75px" class="showContact" data-number='{{item.desc}}'>
+                                    <img ng-src="http://lorempixel.com/60/60/?{{item.rand}}" class="item-thum"></img>
+                                </ons-col>
+                            <ons-col>
+                                <header>
+                                    <span class="item-title">{{item.title}}</span>
+                                </header>
+                                <div ng-show="item.desc==''"><p><span style='opacity: 0.7;'><ons-icon icon='fa-spinner' spin='true'></ons-icon> Loading bacon...</p></span></div>
+                            <p class="item-desc">{{ item.desc }}</p>
+                            <p class="invite-btn">INVITE</p>
+                            </ons-col>
+                        </ons-row>
+                    </ons-list-item>
+                </ons-list>
+            </ons-page>
+        </ons-gesture-detector>
+    </ons-template>
+
+<ons-tabbar var="pageTabber">
+    <ons-tab page="page1.html" active="true" animation="fade">
+        <ons-icon icon="ion-home" class="tab-icon"></ons-icon>
+    </ons-tab>
+    <ons-tab page="page2.html" animation="fade">
+        <ons-icon icon="ion-person" class="tab-icon"></ons-icon>
+    </ons-tab>
+</ons-tabbar>
+<ons-modal var="modal">
+    <ons-icon icon="ion-load-c" spin="true"></ons-icon>
+    <br><br>
+    Please wait.<br>Progressing...
+</ons-modal>
+<script type="text/ons-template" id="popover.html">
 		  <ons-popover direction="up down" cancelable>
 			<ons-list>
 				<ons-list-item class="list__item--tappable list__item__line-height" modifier="">Numbers</ons-list-item>
 				<ons-list-item class="list__item--tappable list__item__line-height" modifier="">One</ons-list-item>
 				<ons-list-item class="list__item--tappable list__item__line-height" modifier="">Two</ons-list-item>
 				<ons-list-item class="list__item--tappable list__item__line-height" modifier="">Three</ons-list-item>
-			</ons-list>
-		  </ons-popover>
-		</script>
-		
-        <script type="text/javascript" src="cordova.js"></script>
-    </body>
+    </ons-list>
+    </ons-popover>
+</script>
+
+<script type="text/javascript" src="cordova.js"></script>
+</body>
 </html>
