@@ -47,21 +47,13 @@ var appMain = {
         if(!result){
             window.plugins.diagnostic.switchToLocationSettings();
         }else{
-            appMain.getLocation();
+            appMain.gotoCheckin();
         }
     },
     checkGPSE: function(result){
         //alert('error');
     },
-    getLocation: function(){
-        modal.show();
-        navigator.geolocation.getCurrentPosition(appMain.getLocationS, appMain.getLocationE);
-    },
-    getLocationS: function(position){
-        modal.hide();
-        alert(position.coords.latitude+'<-=->'+position.coords.longitude)
-    },
-    getLocationE: function(error){
-        modal.hide()
+    gotoCheckin: function(){
+        window.location.href="checkin.html";
     }
 }
