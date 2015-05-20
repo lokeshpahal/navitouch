@@ -41,10 +41,12 @@ var appMain = {
         alert('Connection type: ' + states[networkState]);
     },
     checkGPS: function(){
-        var isEnabled = Diagnostic.isGpsEnabled();
-        alert(isEnabled);
-        if(isEnabled==false){
-            Diagnostic.switchToLocationSettings();
-        }
+        window.plugins.diagnostic.isLocationEnabled(function(resutl){
+            if (result)
+                alert("Location ON");
+            else
+                alert("Location OFF"); window.plugins.diagnostic.switchToLocationSettings();
+        });
+
     }
 }

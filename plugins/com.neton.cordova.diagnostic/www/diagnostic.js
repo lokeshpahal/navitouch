@@ -1,58 +1,129 @@
-/*
+/**
+ *  Plugin diagnostic
  *
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- *
-*/
+ *  Copyright (c) 2012 AVANTIC ESTUDIO DE INGENIEROS
+ *  
+**/
 
-var argscheck = require('cordova/argscheck'),
-    channel = require('cordova/channel'),
-    utils = require('cordova/utils'),
-    exec = require('cordova/exec');
+
+var Diagnostic = function() {
+};
+
 
 /**
- * This represents the mobile device, and provides properties for inspecting the model, version, UUID of the
- * phone, etc.
- * @constructor
+ * Checks device settings for location.
+ *
+ * @param successCallback		The callback which will be called when diagnostic of location is successful.
+ * 								This callback function have a boolean param with the diagnostic result.
+ * @param errorCallback			The callback which will be called when diagnostic of location encounters an error.
+ * 								This callback function have a string param with the error.
  */
-function Diagnostic() {
-}
+Diagnostic.prototype.isLocationEnabled = function(successCallback, errorCallback) {
+    return cordova.exec(successCallback,
+                        errorCallback,
+                        'Diagnostic',
+                        'isLocationEnabled',
+                        []);
+};
 
 /**
- * Check if GPS is enabled
+ * Requests that the user enable the location services in device settings.
+ */
+Diagnostic.prototype.switchToLocationSettings = function() {
+    return cordova.exec(null,
+                        null,
+                        'Diagnostic',
+                        'switchToLocationSettings',
+                        []);
+};
+
+/**
+ * Checks device settings for GPS.
  *
- * @param {Function} successCallback The function to call when the heading data is available
- * @param {Function} errorCallback The function to call when there is an error getting the heading data. (OPTIONAL)
+ * @param successCallback		The callback which will be called when diagnostic of GPS is successful.
+ * 								This callback function have a boolean param with the diagnostic result.
+ * @param errorCallback			The callback which will be called when diagnostic of GPS encounters an error.
+ * 								This callback function have a string param with the error.
  */
 Diagnostic.prototype.isGpsEnabled = function(successCallback, errorCallback) {
-    argscheck.checkArgs('fF', 'Diagnostic.isGpsEnabled', arguments);
-    exec(successCallback, errorCallback, "Diagnostic", "isGpsEnabled", []);
+    return cordova.exec(successCallback,
+                        errorCallback,
+                        'Diagnostic',
+                        'isGpsEnabled',
+                        []);
 };
 
 /**
- * Switch to Location Settings
+ * Checks device settings for wireless network location (Wi-Fi and/or mobile networks).
  *
- * @param {Function} successCallback The function to call when the heading data is available
- * @param {Function} errorCallback The function to call when there is an error getting the heading data. (OPTIONAL)
+ * @param successCallback		The callback which will be called when diagnostic of wireless network location is successful.
+ * 								This callback function have a boolean param with the diagnostic result.
+ * @param errorCallback			The callback which will be called when diagnostic of wireless network location encounters an error.
+ * 								This callback function have a string param with the error.
  */
-Diagnostic.prototype.switchToLocationSettings = function(successCallback, errorCallback) {
-    argscheck.checkArgs('fF', 'Diagnostic.switchToLocationSettings', arguments);
-    exec(successCallback, errorCallback, "Diagnostic", "switchToLocationSettings", []);
+Diagnostic.prototype.isWirelessNetworkLocationEnabled = function(successCallback, errorCallback) {
+    return cordova.exec(successCallback,
+                        errorCallback,
+                        'Diagnostic',
+                        'isWirelessNetworkLocationEnabled',
+                        []);
+};
+
+/**
+ * Checks device settings for Wi-Fi.
+ *
+ * @param successCallback		The callback which will be called when diagnostic of Wi-Fi is successful.
+ * 								This callback function have a boolean param with the diagnostic result.
+ * @param errorCallback			The callback which will be called when diagnostic of Wi-Fi encounters an error.
+ * 								This callback function have a string param with the error.
+ */
+Diagnostic.prototype.isWifiEnabled = function(successCallback, errorCallback) {
+    return cordova.exec(successCallback,
+                        errorCallback,
+                        'Diagnostic',
+                        'isWifiEnabled',
+                        []);
+};
+
+/**
+ * Requests that the user enable the Wi-Fi in device settings.
+ */
+Diagnostic.prototype.switchToWifiSettings = function() {
+    return cordova.exec(null,
+                        null,
+                        'Diagnostic',
+                        'switchToWifiSettings',
+                        []);
+};
+
+/**
+ * Checks device settings for bluetooth.
+ *
+ * @param successCallback		The callback which will be called when diagnostic of bluetooth is successful.
+ * 								This callback function have a boolean param with the diagnostic result.
+ * @param errorCallback			The callback which will be called when diagnostic of bluetooth encounters an error.
+ * 								This callback function have a string param with the error.
+ */
+Diagnostic.prototype.isBluetoothEnabled = function(successCallback, errorCallback) {
+    return cordova.exec(successCallback,
+                        errorCallback,
+                        'Diagnostic',
+                        'isBluetoothEnabled',
+                        []);
 };
 
 
-module.exports = new Diagnostic();
+/**
+ * Requests that the user enable the bluetooth in device settings.
+ */
+Diagnostic.prototype.switchToBluetoothSettings = function() {
+    return cordova.exec(null,
+                        null,
+                        'Diagnostic',
+                        'switchToBluetoothSettings',
+                        []);
+};
+
+cordova.addConstructor(function() {
+    cordova.addPlugin("diagnostic", new Diagnostic());
+});
