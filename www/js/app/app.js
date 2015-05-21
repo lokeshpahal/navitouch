@@ -34,6 +34,7 @@ ons.ready(function() {
 });
 
 $(document).ready(function(){
+    $('body').removeClass('hidden');
     $(document).on('swipeleft', '#aroundme-page', function() {
         pageTabber.setActiveTab(1);
     })
