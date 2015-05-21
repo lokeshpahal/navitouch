@@ -37,13 +37,13 @@
                     </div>
                 </ons-toolbar>
 
-                <div class="card">
+                <div class="card google-map-placeholder">
                     <div class="checkin-map" id="checkin-map"></div>
                     <div class="card-name">Getting location...</div>
                 </div>
 
-                <ons-list>
-                    <ons-list-item modifier="chevron" ng-repeat="i in locList track by $index">
+                <ons-list class="location-list">
+                    <ons-list-item modifier="" ng-repeat="i in locList track by $index">
                         <div class="prop-desc">
                             <ons-icon icon="fa-map-marker"></ons-icon>
                             2-15-13 Hongo Bunkyo Tokyo
@@ -52,6 +52,35 @@
                 </ons-list>
             </ons-page>
         </ons-navigator>
+
+        <ons-template id="page1.html">
+            <ons-page>
+                <ons-toolbar>
+                    <div class="right checkin-cancel"><ons-toolbar-button>Cancel</ons-toolbar-button></div>
+                </ons-toolbar>
+
+                <ons-list modifier="inset" style="margin-top: 10px">
+                    <ons-list-item class="checkin-image">
+                        <div class="card checkin-image-placeholder">
+                            <div class="center"><img src="img/image-placeholder.png" alt="" /></div>
+                        </div>
+                    </ons-list-item>
+                    <ons-list-item>
+                        <textarea class="checkin-desc textarea textarea--transparent" placeholder="" style="width: 100%; height: 100px;"></textarea>
+                    </ons-list-item>
+
+                </ons-list>
+
+                <div style="padding: 10px 9px">
+                    <ons-button modifier="large" style="margin: 0 auto;">
+                        Check In
+                    </ons-button>
+                </div>
+
+
+            </ons-page>
+        </ons-template>
+
         <ons-modal var="modal">
             <ons-icon icon="ion-load-c" spin="true"></ons-icon>
             <br><br>

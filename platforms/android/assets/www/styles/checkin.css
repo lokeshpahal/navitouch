@@ -5,15 +5,29 @@
     top: 0px !important;
     bottom: 0px;
 }
-
+.google-map-placeholder{
+    
+}
 .card {
     background-color: white;
-    background-image: url(../img/sushi-bg.jpg);
+    /*background-image: url(../img/sushi-bg.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-    height: 250px;
+    height: 50%;
     position: relative;
+}
+
+.checkin-image-placeholder{
+    background: #fff;
+}
+.checkin-image-placeholder img{
+    max-width: 100%;
+}
+.checkin-image-placeholder .center{
+    width: 100%;
+    height: 100%;
+    text-align: center;
 }
 
 .card-toolbar ons-back-button span {
@@ -100,6 +114,11 @@
     font-size: 14px;
     vertical-align: -0px;
     opacity: 0.5;
+    margin-right: 5px;
+}
+.location-list{height: 50%;}
+.list__item:hover{
+    background: #F0EDE5;
 }
 .checkin-map{
     position: absolute;
@@ -107,4 +126,41 @@
     top: 0;
     width: 100%;
     height: 100%;
+}
+
+
+
+.to-wrapper {
+    line-height: 1;
+    height: 62px;
+    padding: 10px;
+}
+
+.to-image {
+    width: 42px;
+    height: 42px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.to-name {
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+
+.to-email {
+    font-size: 14px;
+    opacity: 0.4;
+}
+
+.text-input {
+    margin-top: 4px;
+}
+
+.textarea {
+    margin-top: 4px;
+}
+.checkin-image{
+    padding: 0px;
 }

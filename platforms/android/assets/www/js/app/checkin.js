@@ -1,11 +1,12 @@
 app.controller('MyCtrl', ['$scope', function($scope) {
-    $scope.locList = [1,3,4,5,6,6];
+    //$scope.locList = [1,3,4,5,6,6];
 }]);
 
 
 var checkin = {
     map: null,
     locationList: [],
+    checkinIndex: null,
     goBack: function(){
         window.location.href= "app.html";
     },
@@ -40,7 +41,7 @@ var checkin = {
         var request = {
             location: latlng,
             radius: '500',
-            query: 'restaurant'
+            query: 'places'
         };
 
         service = new google.maps.places.PlacesService(checkin.map);
@@ -53,6 +54,7 @@ var checkin = {
                 var ldata = {name:place.name,lat:place.geometry.location.A,lng:place.geometry.location.F,rating:place.rating,vicinity:place.vicinity}
                 checkin.locationList.push(ldata);
                 checkin.createMarker(place);
+                checkin.createList(place);
             }
         }
     },
@@ -65,13 +67,34 @@ var checkin = {
             title: '',
             //icon: icn_img
         });
+    },
+    createList: function(data){
+        var html ='<ons-list-item class="list__item ons-list-item-inner place-item">';
+        html += '<div class="prop-desc"><ons-icon icon="fa-map-marker" class="ons-icon fa-map-marker fa fa-lg"></ons-icon>';
+        html += data.name;
+        html += '</div></ons-list-item>';
+        $('.list').append(html);
     }
 }
 
 
 $(document).ready(function(){
     checkin.getLocation();
+    $(document).on('click','.checkin-cancel',function(){
+        myNavigator.popPage()
+    })
+
+    $(document).on('click','.place-item',function(){
+        var index = $(this).index();
+        checkin.checkinIndex = index
+        myNavigator.pushPage('page1.html', { animation : 'lift' } );
+        myNavigator.on("postpush", function(){
+            var checkinDesc = 'Hey, I am here @'+checkin.locationList[index].name+' ...';
+            $('.checkin-desc').html(checkinDesc);
+        });
+    });
+
     $(document).on('click','.checkin-back',function(){
         checkin.goBack();
-    })
+    });
 });

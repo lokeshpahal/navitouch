@@ -5,14 +5,16 @@
     top: 0px !important;
     bottom: 0px;
 }
-
+.google-map-placeholder{
+    
+}
 .card {
     background-color: white;
     /*background-image: url(../img/sushi-bg.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-    height: 250px;
+    height: 50%;
     position: relative;
 }
 
@@ -114,6 +116,7 @@
     opacity: 0.5;
     margin-right: 5px;
 }
+.location-list{height: 50%;}
 .list__item:hover{
     background: #F0EDE5;
 }
