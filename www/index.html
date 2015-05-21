@@ -2,58 +2,60 @@
 <html lang="en" ng-app="app">
     <head>
         <meta charset="utf-8">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="mobile-web-app-capable" content="yes">
-		<meta name="format-detection" content="telephone=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" href="css/onsenui.css"/>  
-		<link rel="stylesheet" href="styles/onsen-css-components.css"/>  
-		<link rel="stylesheet" href="styles/app.css"/>
-		
-		<script src="js/angular/angular.js"></script>    
-		<script src="js/onsenui.js"></script>   
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/app/main.js"></script>
-        <script type="text/javascript" src="js/app/login.js"></script>		
-		
-		<script>
-			var app = angular.module('app', ['onsen']);
-		</script>
-		
+        <link rel="stylesheet" href="styles/onsen-css-components.css"/>  
+        <link rel="stylesheet" href="styles/app.css"/>
+
         <title>Hello World</title>
     </head>
     <body class="login-page" ng-controller="AppController">
-		<ons-navigator title="Navigator" var="navi">
-			<ons-page>
-			  <div class="login-form">
-				<br><br>
-				<input type="number" class="text-input--underbar c-code" disabled placeholder="+91" value="">
-				<input type="number" class="text-input--underbar c-number" placeholder="Mobile Number" value="">
-				<br><br><br>
-				<ons-button modifier="" class="login-button">Ok</ons-button>
-				<br/><br/>
-				<img src="http://www.w3schools.com/Html/html5.gif" width="100px" height="100px" />
-			  </div>
-			</ons-page>
-		</ons-navigator>
+        <ons-navigator title="Navigator" var="navi">
+            <ons-page>
+                <div class="login-form">
+                    <br><br>
+                    <input type="number" class="text-input--underbar c-code" disabled placeholder="+91" value="">
+                    <input type="number" class="text-input--underbar c-number" placeholder="Mobile Number" value="">
+                    <br><br><br>
+                    <ons-button modifier="" class="login-button">Ok</ons-button>
+                    <br/><br/>
+                    <img src="http://www.w3schools.com/Html/html5.gif" width="100px" height="100px" />
+                </div>
+            </ons-page>
+        </ons-navigator>
 
-		<ons-template id="page1.html">
-			<ons-page id="first-page" var="page"
-			ng-device-backbutton="onDeviceBackButton($event)">
+        <ons-template id="page1.html">
+            <ons-page id="first-page" var="page"
+                      ng-device-backbutton="onDeviceBackButton($event)">
 
-			  <div class="login-form-otp">
-				<br><br>
-				<input type="number" maxlength="5" class="text-input--underbar mobile-number" placeholder="OTP" value="">
-				<br><br><br>
-				<ons-button modifier="" class="login-button-OTP">Ok</ons-button>
-				<p id="otp-info"></p>
-			  </div>
+                <div class="login-form-otp">
+                    <br><br>
+                    <input type="number" maxlength="5" class="text-input--underbar mobile-number" placeholder="OTP" value="">
+                    <br><br><br>
+                    <ons-button modifier="" class="login-button-OTP">Ok</ons-button>
+                    <p id="otp-info"></p>
+                </div>
 
-			</ons-page>
-		</ons-template>
-		
+            </ons-page>
+        </ons-template>
+
+        <script src="js/angular/angular.js"></script>    
+        <script src="js/onsenui.js"></script>   
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/app/main.js"></script>
+        <script type="text/javascript" src="js/app/login.js"></script>		
+
+        <script>
+            var app = angular.module('app', ['onsen']);
+        </script>
+
+
         <script type="text/javascript" src="cordova.js"></script>
+
     </body>
 </html>

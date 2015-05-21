@@ -13,20 +13,9 @@
         <link rel="stylesheet" href="styles/app.css"/>
         <link rel="stylesheet" href="styles/checkin.css"/>
 
-        <script src="js/angular/angular.js"></script>    
-        <script src="js/onsenui.js"></script>   
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCIkPMzUFd1dB7rUniAdfuq4kghzH1TUWw&sensor=true&libraries=places"></script>
-        <script type="text/javascript" src="js/app/main.js"></script>
-        <script type="text/javascript" src="js/app/checkin.js"></script>
-
-        <script>
-            var app = angular.module('app', ['onsen']);
-        </script>
-
         <title>Hello World</title>
     </head>
-    <body class="checkin-page" ng-controller="MyCtrl">
+    <body class="checkin-page hidden" ng-controller="MyCtrl">
         <ons-navigator title="Navigator" var="myNavigator">
             <ons-page modifier="shop-details">
                 <ons-toolbar modifier="transparent">
@@ -62,11 +51,11 @@
                 <ons-list modifier="inset" style="margin-top: 10px">
                     <ons-list-item class="checkin-image">
                         <div class="card checkin-image-placeholder">
-                            <div class="center"><img src="img/image-placeholder.png" alt="" /></div>
+                            <div class="center"></div>
                         </div>
                     </ons-list-item>
-                    <ons-list-item>
-                        <textarea class="checkin-desc textarea textarea--transparent" placeholder="" style="width: 100%; height: 100px;"></textarea>
+                    <ons-list-item class="checkin-desc-placeholder">
+                        <textarea class="checkin-desc textarea" placeholder="" style="width: 100%; height: 100px;"></textarea>
                     </ons-list-item>
 
                 </ons-list>
@@ -86,6 +75,18 @@
             <br><br>
             Please wait.<br>Progressing...
         </ons-modal>
+
+        <script src="js/angular/angular.js"></script>    
+        <script src="js/onsenui.js"></script>   
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCIkPMzUFd1dB7rUniAdfuq4kghzH1TUWw&sensor=true&libraries=places"></script>
+        <script type="text/javascript" src="js/app/main.js"></script>
+        <script type="text/javascript" src="js/app/checkin.js"></script>
+
+        <script>
+            var app = angular.module('app', ['onsen']);
+        </script>
+
         <script type="text/javascript" src="cordova.js"></script>
     </body>
 </html>

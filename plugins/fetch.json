@@ -49,5 +49,12 @@
             "url": "https://github.com/mablack/cordova-diagnostic-plugin.git",
             "subdir": "."
         }
+    },
+    "cordova-plugin-camera": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/apache/cordova-plugin-camera.git",
+            "subdir": "."
+        }
     }
 }

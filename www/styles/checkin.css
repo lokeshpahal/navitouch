@@ -1,3 +1,4 @@
+body.hidden{visibility: hidden;}
 .page--shop-details__content {
     position: absolute;
     left: 0px;
@@ -6,7 +7,7 @@
     bottom: 0px;
 }
 .google-map-placeholder{
-    
+
 }
 .card {
     background-color: white;
@@ -20,14 +21,30 @@
 
 .checkin-image-placeholder{
     background: #fff;
+    height: 250px;
 }
-.checkin-image-placeholder img{
-    max-width: 100%;
-}
+
 .checkin-image-placeholder .center{
-    width: 100%;
+    background-image: url("../img/image-placeholder.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
     height: 100%;
     text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.checkin-desc-placeholder{
+    padding: 0;
+}
+.checkin-desc-placeholder textarea{
+    border-radius: 0;
+}
+
+.checkin-image-placeholder .center.after{
+    width: 100%;
+    background-size: cover;
 }
 
 .card-toolbar ons-back-button span {

@@ -29,7 +29,13 @@ var checkin = {
         var myOptions = {
             zoom: 16,
             center: latlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            zoomControl: false,
+            mapTypeControl: false,
+            scaleControl: false,
+            streetViewControl: false,
+            overviewMapControl: false
         };
         checkin.map = new google.maps.Map(document.getElementById("checkin-map"), myOptions);
         var marker = new google.maps.Marker({
@@ -74,12 +80,27 @@ var checkin = {
         html += data.name;
         html += '</div></ons-list-item>';
         $('.list').append(html);
+    },
+    takePicture: function(){
+        var cameraOptions = {quality: 50, destinationType: Camera.DestinationType.DATA_URL };
+        navigator.camera.getPicture( checkin.takePictureS, checkin.takePictureE, cameraOptions );
+    },
+    takePictureS: function(imageData){
+        $('.checkin-image-placeholder .center').addClass('after').attr('style',"background-image:url(data:image/jpeg;base64," + imageData + ")" )
+    },
+    takePictureE: function(){
+
     }
 }
 
 
 $(document).ready(function(){
+    $('body').removeClass('hidden')
     checkin.getLocation();
+    $(document).on('click','.checkin-image-placeholder',function(){
+        checkin.takePicture();
+    });
+
     $(document).on('click','.checkin-cancel',function(){
         myNavigator.popPage()
     })
@@ -97,4 +118,13 @@ $(document).ready(function(){
     $(document).on('click','.checkin-back',function(){
         checkin.goBack();
     });
+
+    document.addEventListener("showkeyboard", function(){
+        $('.checkin-image').slideUp();
+    }, false);
+    document.addEventListener("hidekeyboard", function(){ 
+        $('.checkin-image').slideDown();
+        $(':focus').blur();
+    }, false);
+
 });

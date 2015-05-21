@@ -109,6 +109,34 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.diagnostic"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+        "id": "cordova-plugin-camera.Camera",
+        "clobbers": [
+            "Camera"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+        "id": "cordova-plugin-camera.CameraPopoverOptions",
+        "clobbers": [
+            "CameraPopoverOptions"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/Camera.js",
+        "id": "cordova-plugin-camera.camera",
+        "clobbers": [
+            "navigator.camera"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/CameraPopoverHandle.js",
+        "id": "cordova-plugin-camera.CameraPopoverHandle",
+        "clobbers": [
+            "CameraPopoverHandle"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -120,7 +148,8 @@ module.exports.metadata =
     "com.ubookr.plugins.calllog": "2.0",
     "org.apache.cordova.network-information": "0.2.15",
     "org.apache.cordova.geolocation": "0.3.12",
-    "cordova.plugins.diagnostic": "0.0.1"
+    "cordova.plugins.diagnostic": "0.0.1",
+    "cordova-plugin-camera": "1.1.1-dev"
 }
 // BOTTOM OF METADATA
 });
