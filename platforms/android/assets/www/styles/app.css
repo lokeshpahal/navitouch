@@ -1,3 +1,4 @@
+body.hidden{visibility: hidden;}
 .app-name{padding-left:10px;box-sizing:border-box;}
 .login-page .page__background{background-color:#1865a9}
 .login-page .ons-tab-bar__footer{display:none;}
