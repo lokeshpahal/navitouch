@@ -43,6 +43,9 @@ $(document).ready(function(){
     })
     $(document).on('click','.check-in',function(){
         modal.show();
+        setTimeout(function(){
+            modal.hide();
+        },1000);
         appMain.checkGPS();
     });
 });

@@ -118,6 +118,10 @@ $(document).ready(function(){
     $(document).on('click','.checkin-back',function(){
         checkin.goBack();
     });
+    
+    $(document).on('click','.make-checkin',function(){
+        window.location.href="app.html";
+    });
 
     document.addEventListener("showkeyboard", function(){
         $('.checkin-image').slideUp();
